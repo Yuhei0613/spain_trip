@@ -3,364 +3,665 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スペイン 11日間 旅程 (2025年12月)</title>
+    <title>🇪🇸 スペイン 11日間 旅程 (2025年12月)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Interフォントを適用（Tailwindのデフォルトに似ていますが念のため） */
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        /* details[open] のマーカーを回転させる */
-        details[open] summary .arrow {
-            transform: rotate(90deg);
+        /* details[open] > summary のスタイル */
+        details[open] > summary {
+            background-color: #f0f9ff; /* bg-blue-50 */
+            border-bottom: 2px solid #3b82f6; /* border-blue-500 */
         }
-        .arrow {
+        details summary {
+            padding: 1.25rem; /* p-5 */
+            cursor: pointer;
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #1e3a8a; /* text-blue-900 */
+            list-style: none; /* list-none 互換 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details summary::-webkit-details-marker {
+            display: none; /* list-none 互換 */
+        }
+        /* 閉じた状態の矢印 */
+        details summary::after {
+            content: '▼';
+            font-size: 0.8rem;
             transition: transform 0.2s;
         }
-        /* アクティビティとショッピングのUI改善 */
-        .activity-item {
-            display: flex;
-            align-items: flex-start;
-            space-x: 3;
+        /* 開いた状態の矢印 */
+        details[open] summary::after {
+            transform: rotate(180deg);
+            content: '▲';
         }
-        .activity-content {
-            flex: 1;
+        .itinerary-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem; /* gap-4 */
+            padding: 1rem; /* p-4 */
+            border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
         }
-        .activity-time {
-            width: 70px; /* 時間表示用の幅を固定 */
-            font-weight: bold;
-            color: #374151; /* gray-700 */
+        .itinerary-item:last-child {
+            border-bottom: none;
         }
-        .shopping-note {
-            background-color: #f9fafb; /* gray-50 */
-            border-left-width: 4px;
-            border-color: #fbbf24; /* amber-400 */
-            padding: 0.75rem; /* p-3 */
-            margin-top: 0.75rem; /* mt-3 */
-            border-radius: 0.25rem; /* rounded */
+        .time {
+            font-weight: 700; /* font-bold */
+            color: #1e3a8a; /* text-blue-900 */
+            text-align: right;
+        }
+        .shopping-box {
+            background-color: #fffbeb; /* bg-yellow-50 */
+            border: 1px solid #fde68a; /* border-yellow-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem; /* p-4 */
+            margin-top: 1rem; /* mt-4 */
+        }
+        .shopping-box h4 {
+            font-weight: 700; /* font-bold */
+            color: #ca8a04; /* text-yellow-700 */
+            margin-bottom: 0.5rem; /* mb-2 */
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
+        <!-- ヘッダー -->
+        <header class="p-6 md:p-8 bg-gradient-to-r from-blue-800 to-blue-600 text-white">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">🇪🇸 スペイン 11日間 旅程</h1>
+            <p class="text-xl md:text-2xl text-blue-100">バルセロナ & マドリード (2025年12月)</p>
+        </header>
 
-    <!-- ヘッダー -->
-    <header class="bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 text-white p-6 shadow-lg">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2">バルセロナ & マドリード 11日間の旅</h1>
-            <p class="text-xl">2025年12月19日 - 12月29日 | クリスマス特別プラン</p>
-        </div>
-    </header>
+        <!-- メインコンテンツ -->
+        <main class="p-6 md:p-8">
 
-    <!-- メインコンテンツ -->
-    <main class="container mx-auto p-4 md:p-8 max-w-4xl">
-
-        <!-- 1. 旅程サマリー (宿泊ホテル) -->
-        <section id="summary" class="mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-gray-700 border-b-2 border-red-500 pb-2">旅程サマリー & 宿泊ホテル</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <!-- バルセロナ ホテルカード -->
-                <div class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4">
-                    <span class="text-4xl">🏨</span>
-                    <div>
-                        <h3 class="text-lg font-semibold text-blue-800">バルセロナ (5泊)</h3>
-                        <p class="text-gray-600">12/20(土) チェックイン</p>
-                        <p class="text-gray-600">12/25(木) チェックアウト</p>
-                        <p class="font-medium mt-1">ホテル パセオ デ グラシア</p>
+            <!-- 1. 旅程サマリー -->
+            <section id="summary" class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">旅程サマリー</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <!-- バルセロナ ホテルカード -->
+                    <div class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4">
+                        <span class="text-4xl">🏨</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-blue-800">バルセロナ (5泊)</h3>
+                            <p class="text-gray-600">12/20(土) チェックイン (正午)</p>
+                            <p class="text-gray-600">12/25(木) チェックアウト (正午)</p>
+                            <p class="font-medium mt-1">ホテル パセオ デ グラシア</p>
+                        </div>
+                    </div>
+                    <!-- マドリード ホテルカード -->
+                    <div class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4">
+                        <span class="text-4xl">🏨</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-green-800">マドリード (3泊)</h3>
+                            <p class="text-gray-600">12/25(木) チェックイン (14:00以降)</p>
+                            <p class="text-gray-600">12/28(日) チェックアウト (12:00まで)</p>
+                            <p class="font-medium mt-1">ホテル クアトロ プエルタ デル ソル</p>
+                        </div>
                     </div>
                 </div>
-                <!-- マドリード ホテルカード -->
-                <div class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4">
-                    <span class="text-4xl">🏨</span>
+            </section>
+            
+            <!-- 1.5. わりかん & 予約情報 (折りたたみ式に変更) -->
+            <details id="bookings" class="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
+                <summary>
+                    <span>💳 わりかん & 予約情報</span>
+                </summary>
+                <div class="p-6 border-t border-gray-200">
+                    <!-- わりかん -->
+                    <div class="mb-6 text-center">
+                        <p class="text-lg mb-4">旅行の費用はこちらで「わりかん」します：</p>
+                        <a href="https://walica.jp/group/01KA8RCX63SQBA552N9SDNJB3Q" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                            わりかんページへ
+                        </a>
+                    </div>
+
+                    <!-- ✈️ 航空券情報 (新規追加) -->
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-800">航空券情報</h3>
+                        <ul class="space-y-4">
+                            <!-- 行き -->
+                            <li class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                <span class="text-2xl pt-1">🛫</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">往路 (東京 → バルセロナ)</h4>
+                                    <p class="text-sm text-gray-600">金額: <strong class="text-gray-800">130,872円</strong></p>
+                                </div>
+                            </li>
+                            <!-- 帰り -->
+                            <li class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                <span class="text-2xl pt-1">🛬</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">復路 (マドリード → 東京)</h4>
+                                    <p class="text-sm text-gray-600">金額: <strong class="text-gray-800">174,372円</strong></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ★ ホテル予約情報 -->
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-800">ホテル予約情報</h3>
+                        <ul class="space-y-4">
+                            <!-- バルセロナ ホテル -->
+                            <li class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                <span class="text-2xl pt-1">🏨</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">ホテル パセオ デ グラシア (バルセロナ)</h4>
+                                    <p class="text-sm text-gray-600">予約サイト: Expedia</p>
+                                    <p class="text-sm text-gray-600">旅程番号: <strong class="text-red-600">73268319636686</strong></p>
+                                    <p class="text-sm text-gray-600">金額: <strong class="text-gray-800">116,742円</strong></p>
+                                    <p class="text-sm text-gray-600">担当: <strong class="text-blue-600">未来</strong></p>
+                                </div>
+                            </li>
+                            <!-- マドリード ホテル -->
+                            <li class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                <span class="text-2xl pt-1">🏨</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">ホテル クアトロ プエルタ デル ソル (マドリード)</h4>
+                                    <p class="text-sm text-gray-600">予約サイト: Agoda</p>
+                                    <p class="text-sm text-gray-600">予約ID: <strong class="text-red-600">1669364807</strong></p>
+                                    <p class="text-sm text-gray-600">金額: <strong class="text-gray-800">106,975円</strong></p>
+                                    <p class="text-sm text-gray-600">担当: <strong class="text-blue-600">未来</strong></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 予約済みチケット -->
                     <div>
-                        <h3 class="text-lg font-semibold text-green-800">マドリード (3泊)</h3>
-                        <p class="text-gray-600">12/25(木) チェックイン</p>
-                        <p class="text-gray-600">12/28(日) チェックアウト</p>
-                        <p class="font-medium mt-1">ホテル クアトロ プエルタ デル ソル</p>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-800">予約済みチケット情報</h3>
+                        <ul class="space-y-4">
+                            <!-- カサ・ミラ -->
+                            <li class="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                                <span class="text-2xl pt-1">🎟️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">カサ・ミラ (ラ・ペドレラ)</h4>
+                                    <p class="text-sm text-gray-600">予約番号: <strong class="text-red-600">90544617</strong></p>
+                                    <p class="text-sm text-gray-600">金額: €58.00 (2名)</p>
+                                    <p class="text-sm text-gray-600">担当: <strong class="text-blue-600">未来</strong></p>
+                                </div>
+                            </li>
+                            <!-- カサ・バトリョ -->
+                            <li class="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                                <span class="text-2xl pt-1">🎟️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">カサ・バトリョ</h4>
+                                    <p class="text-sm text-gray-600">予約番号: <strong class="text-red-600">90544872</strong></p>
+                                    <p class="text-sm text-gray-600">金額: €72.00</p>
+                                    <p class="text-sm text-gray-600">担当: <strong class="text-blue-600">祐平</strong></p>
+                                </div>
+                            </li>
+                            <!-- サグラダ・ファミリア -->
+                            <li class="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                                <span class="text-2xl pt-1">🎟️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">サグラダ・ファミリア (タワー付き)</h4>
+                                    <p class="text-sm text-gray-600">予約番号: <strong class="text-red-600">90546021</strong></p>
+                                    <p class="text-sm text-gray-600">金額: €68.00 (2名)</p>
+                                    <p class="text-sm text-gray-600">担当: <strong class="text-blue-600">祐平</strong></p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </section>
+            </details>
 
-        <!-- 2. 最重要アドバイス (アラート) -->
-        <section id="advice" class="mb-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold mb-3">【最重要】今すぐやるべき予約リスト</h3>
-            <p class="mb-3">この旅行はクリスマス（ヨーロッパ最大の繁忙期）と重なります。以下の予約がまだなら、**今すぐ手配**してください！</p>
-            <ul class="list-disc list-inside space-y-2">
-                <li><strong class="text-red-600">クリスマスディナー (12/24, 12/25)：</strong> 営業している店は完全予約制です。</li>
-                <li><strong>高速鉄道 (12/25)：</strong> バルセロナ→マドリード。便数が減るため必須です。</li>
-                <li><strong>日帰り鉄道 (12/26)：</strong> マドリード⇔トレド。満席になりやすい路線です。</li>
-                <li><strong>観光チケット (全日程)：</strong> サグラダ・ファミリア、カタルーニャ音楽堂、マドリード王宮など、全て日時指定で事前購入してください。</li>
-            </ul>
-        </section>
-
-        <!-- 3. 日別詳細旅程 (アコーディオン) -->
-        <section id="itinerary">
-            <h2 class="text-2xl font-bold mb-4 text-gray-700 border-b-2 border-red-500 pb-2">日別詳細旅程</h2>
-            <div class="space-y-3">
-
-                <!-- 1日目: 12/19 (金) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center">
-                        Day 1: 12月19日(金) - 東京 出発
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-3">
-                            <li class="activity-item">
-                                <span class="text-xl pt-1">✈️</span>
-                                <div class="activity-content"><strong>18:00:</strong> 羽田空港 (HND) 出発</div>
-                            </li>
-                            <li class="activity-item">
-                                <span class="text-xl pt-1">✈️</span>
-                                <div class="activity-content"><strong>21:20:</strong> 北京首都国際空港 (PEK) 到着（乗り継ぎ）</div>
-                            </li>
-                        </ul>
+            <!-- 2. 日別旅程 (すべて折りたたみ式に変更) -->
+            <section id="itinerary">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">日別詳細旅程</h2>
+                
+                <!-- 1日目: 出発 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【1日目】12月19日(金) - ✈️ 東京 (出発)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">18:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">✈️ 羽田空港 (HND) 出発</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">21:20</div>
+                            <div class="activity">
+                                <h4 class="font-bold">✈️ 北京首都国際空港 (PEK) 到着</h4>
+                                <p class="text-gray-600">乗り継ぎ（翌日 03:00発）</p>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
-                <!-- 2日目: 12/20 (土) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center">
-                        Day 2: 12月20日(土) - バルセロナ 到着
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-3">
-                            <li class="activity-item"><span class="text-xl pt-1">✈️</span><div class="activity-content"><strong>03:00:</strong> 北京 (PEK) 出発</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🛬</span><div class="activity-content"><strong>08:50:</strong> バルセロナ・エル・プラット空港 (BCN) 到着</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏨</span><div class="activity-content"><strong>10:00:</strong> ホテルへ移動＆荷物預け (ホテル パセオ デ グラシア)</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🚶</span><div class="activity-content"><strong>15:00:</strong> グラシア通り周辺散策 (カサ・バトリョ/ミラ外観見学)</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏨</span><div class="activity-content"><strong>17:00:</strong> ホテルにチェックイン</div></li>
-                        </ul>
+                <!-- 2日目: 到着・仮眠 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【2日目】12月20日(土) - 🏨 バルセロナ (到着・仮眠)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">03:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">✈️ 北京 (PEK) 出発</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">08:50</div>
+                            <div class="activity">
+                                <h4 class="font-bold">✈️ バルセロナ・エル・プラット空港 (BCN) 到着</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">10:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ホテルへ移動</h4>
+                                <p class="text-gray-600">荷物を預ける (ホテル パセオ デ グラシア)</p>
+                            </div>
+                        </div>
+                         <div class="itinerary-item">
+                            <div class="time">12:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🏨 ホテルチェックイン</h4>
+                                <p class="text-gray-600">予約情報：チェックイン開始 正午 (12:00)</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">13:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🍴 ランチ</h4>
+                                <p class="text-gray-600">スペインのランチタイム (13:30頃〜) に合わせて、ホテル周辺で食事。</p>
+                            </div>
+                        </div>
+                         <div class="itinerary-item">
+                            <div class="time">14:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">😴 仮眠</h4>
+                                <p class="text-gray-600">長旅の疲れを取ります。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">17:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🚶‍♂️ グラシア通り周辺散策</h4>
+                                <p class="text-gray-600">ホテルの目の前。ライトアップされたカサ・バトリョ/ミラの外観を下見。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">19:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🍽️ 夕食</h4>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
-                <!-- 3日目: 12/21 (日) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center text-blue-800">
-                        Day 3: 12月21日(日) - バルセロナ (世界遺産とガウディ建築)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <p class="mb-4 text-sm text-blue-700">バルセロナ観光のハイライトデー！午後はホテル（パセオ・デ・グラシア）周辺で完結します。</p>
-                        <ul class="space-y-4">
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>09:30: サン・パウ病院 (見学)</strong><p class="text-sm text-gray-600">サグラダ・ファミリアの予約時間（11:30）に合わせた完璧なスケジュール。もう一つの世界遺産。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>11:30: サグラダ・ファミリア (入場)</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【予約必須】</strong> タワー付きチケットがおすすめです。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🍽️</span><div class="activity-content"><strong>13:00:</strong> ガウディー通り周辺でランチ</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>15:00: カサ・ミラ（ラ・ペドレラ）</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【予約推奨】</strong> ホテルから徒歩圏内です。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>17:00: カサ・バトリョ</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【予約推奨】</strong> カサ・ミラからすぐ。</p></div></li>
-                            
-                            <!-- UI変更：ショッピング情報を別枠で追加 -->
-                            <li class="activity-item"><span class="text-xl pt-1">🛍️</span><div class="activity-content"><strong>合間に: ショッピング (グラシア通り)</strong>
-                                <div class="shopping-note">
-                                    <p class="text-sm font-semibold text-gray-700 mb-2">カサ・ミラとカサ・バトリョの間は、ご希望のブランドが集中しています。観光の合間に立ち寄れます。</p>
-                                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                        <li><strong>Bassal</strong> (Carrer de Provença, 231) ※カサ・ミラ至近</li>
-                                        <li>LOEWE</li>
-                                        <li>Pretty Ballerinas</li>
-                                        <li>Castañer</li>
-                                        <li>BIMBA Y LOLA</li>
-                                        <li>Adolfo Dominguez</li>
-                                        <li>ZARA / Zara Home</li>
-                                        <li>CAMPER</li>
-                                        <li>Desigual</li>
-                                        <li>Purificación García</li>
+                <!-- 3日目: ガウディ建築 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【3日目】12月21日(日) - 🎨 ガウディ建築とショッピング</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">09:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">カサ・ミラ（ラ・ペドレラ）</h4>
+                                <p class="text-gray-600">ガウディの作品。音声ガイド推奨。</p>
+                                <p class="font-bold text-green-600">【予約済み (未来)】</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">11:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">カサ・バトリョ</h4>
+                                <p class="text-gray-600">ガウディの作品。ドラゴンの体を表した建物。</p>
+                                <p class="font-bold text-green-600">【予約済み (祐平)】</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">12:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🛍️ ショッピング (グラシア通り)</h4>
+                                <p class="text-gray-600">ホテル（パセオ・デ・グラシア）周辺で買い物。</p>
+                                <!-- ショッピングボックス -->
+                                <div class="shopping-box">
+                                    <h4 class="flex items-center"><span class="text-2xl mr-2">🛍️</span>立ち寄りスポット (グラシア通り)</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700">
+                                        <li><strong>Bassal (Carrer de Provença, 231)</strong>: カサ・ミラの角</li>
+                                        <li><strong>LOEWE (ロエベ)</strong>: カサ・バトリョの隣</li>
+                                        <li>ZARA, Pretty Ballerinas, Castañer</li>
+                                        <li>BIMBA Y LOLA, CAMPER, Desigual など</li>
                                     </ul>
                                 </div>
-                            </div></li>
-                        </ul>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">13:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🏨 ホテルへ</h4>
+                                <p class="text-gray-600">買い物袋をホテルに置きに戻ります。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">14:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🍴 ランチ</h4>
+                                <p class="text-gray-600">ホテル周辺またはサグラダ・ファミリア方面で。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">15:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">サグラダ・ファミリア (入場)</h4>
+                                <p class="text-gray-600">【重要】予約時間 (15:30) までに到着。タワー付きチケット。</p>
+                                <p class="font-bold text-green-600">【予約済み (祐平)】</p>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
-                <!-- 4日目: 12/22 (月) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center">
-                        Day 4: 12月22日(月) - バルセロナ (旧市街と海辺)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-4">
-                            <li class="activity-item"><span class="text-xl pt-1">🚶</span><div class="activity-content"><strong>午前: ゴシック地区（旧市街）散策</strong>
-                                <p class="text-sm text-gray-600 mb-3">バルセロナ大聖堂など、中世の雰囲気を感じる路地を歩きます。</p>
-                                <!-- UI変更：ショッピング情報を別枠で追加 -->
-                                <div class="shopping-note">
-                                    <p class="text-sm font-semibold text-gray-700 mb-2">立ち寄りスポット (ドゥック通り周辺):</p>
-                                    <p class="text-sm text-gray-600 mb-2">ゴシック地区のこの通りには若者向けブランドが集まっています。</p>
-                                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                        <li>NUDE PROJECT</li>
-                                        <li>2 JS</li>
-                                        <li>Scuffers</li>
-                                        <li>Meller</li>
+                <!-- 4日目: 旧市街・海辺 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【4日目】12月22日(月) - 🏰 旧市街と海辺の散策</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">午前</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ゴシック地区（旧市街）散策</h4>
+                                <p class="text-gray-600">中世の雰囲気を感じる路地へ。</p>
+                                <ul class="list-disc list-inside text-gray-600 mt-2">
+                                    <li><strong>バルセロナ大聖堂 (内部見学)</strong>: ミサ時間以外で観光客も見学可能。</li>
+                                    <li>王の広場、サン・ジャウマ広場 など</li>
+                                </ul>
+                                <!-- ショッピングボックス -->
+                                <div class="shopping-box">
+                                    <h4 class="flex items-center"><span class="text-2xl mr-2">🛍️</span>立ち寄りスポット (ゴシック地区)</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700">
+                                        <li><strong>Bassal (Carrer de la Palla, 9)</strong>: 大聖堂のすぐ近くのオリーブオイル店。</li>
+                                        <li><strong>ドゥック通り (Carrer del Duc)</strong>: NUDE PROJECT, 2 JS, Scuffers など若者向けブランドが集積。</li>
                                     </ul>
                                 </div>
-                            </div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🍽️</span><div class="activity-content"><strong>昼: バルセロネータ（海辺）でパエリアランチ</strong><p class="text-sm text-gray-600">海辺のテラス席がおすすめです。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🛍️</span><div class="activity-content"><strong>午後: ボルン地区散策</strong>
-                                <p class="text-sm text-gray-600 mb-3">おしゃれな雑貨店やピカソ美術館（※要予約）があります。</p>
-                                <!-- UI変更：ショッピング情報を別枠で追加 -->
-                                <div class="shopping-note">
-                                    <p class="text-sm font-semibold text-gray-700 mb-2">立ち寄りスポット (ボルン地区):</p>
-                                    <p class="text-sm text-gray-600 mb-2">バルセロナ発のブランドやセレクトショップが多いエリアです。</p>
-                                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                        <li>Etnia Barcelona (旗艦店)</li>
-                                        <li>Lupo</li>
-                                        <li>Lourdes Bergadá</li>
-                                        <li>Orenda</li>
-                                        <li>Basquiat (セレクトショップ)</li>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">昼</div>
+                            <div class="activity">
+                                <h4 class="font-bold">🍴 バルセロネータ（海辺）でパエリアランチ</h4>
+                                <p class="text-gray-600">海辺のテラスがおすすめです。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">午後</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ボルン地区 散策</h4>
+                                <p class="text-gray-600">バルセロナ発のアーティストショップやバルが多いエリア。</p>
+                                <!-- ショッピングボックス -->
+                                <div class="shopping-box">
+                                    <h4 class="flex items-center"><span class="text-2xl mr-2">🛍️</span>立ち寄りスポット (ボルン地区)</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700">
+                                        <li><strong>Etnia Barcelona</strong>: 有名なアイウェアブランドの旗艦店。</li>
+                                        <li>ピカソ美術館 (※興味があれば。要予約)</li>
+                                        <li>Lupo, Orenda などローカルブランドのセレクトショップ。</li>
                                     </ul>
                                 </div>
-                            </div></li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
-                <!-- 5日目: 12/23 (火) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center">
-                        Day 5: 12月23日(火) - バルセロナ (音楽堂と絶景)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-4">
-                            <!-- UI変更：ショッピング情報を別枠で追加 -->
-                            <li class="activity-item"><span class="text-xl pt-1">🛍️</span><div class="activity-content"><strong>午前: ショッピング (ポルタル・デ・アンジェル通り)</strong>
-                                <p class="text-sm text-gray-600 mb-3">カタルーニャ広場からゴシック地区へ向かう歩行者天国。ZARAグループのブランドが集結しています。</p>
-                                <div class="shopping-note">
-                                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                        <li>Massimo Dutti</li>
-                                        <li>Pull&Bear</li>
-                                        <li>Oysho</li>
-                                        <li>Stradivarius</li>
-                                        <li>Bershka</li>
-                                        <li>MANGO</li>
+                <!-- 5日目: 市場・絶景 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【5日目】12月23日(火) - 🎶 市場と絶景</summary>
+                    <div class="border-t border-gray-200">
+                        <!-- ショッピングボックス (朝) -->
+                        <div class="itinerary-item">
+                            <div class="time">10:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">カタルーニャ音楽堂</h4>
+                                <p class="text-gray-600">【重要】ガイドツアーでないとホール内部に入れません。事前予約推奨。</p>
+                                <!-- ショッピングボックス -->
+                                <div class="shopping-box">
+                                    <h4 class="flex items-center"><span class="text-2xl mr-2">🛍️</span>ルート情報 (ポルタル・デ・アンジェル通り)</h4>
+                                    <p class="text-sm text-gray-700">ホテル（カタルーニャ広場）から音楽堂へ向かう途中、この歩行者天国を通ります。<br>Massimo Dutti, Pull&Bear, Oysho, MANGO, Bershka などが集まっています。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">12:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ボケリア市場 (サン・ジョセップ市場)</h4>
+                                <p class="text-gray-600">ランチ・食べ歩き。午前中が最も活気があります。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">15:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ブンケルス・デル・カルメル (絶景スポット)</h4>
+                                <p class="text-gray-600">バルセロナの街を一望できる丘。アクセスはタクシーが最も早くて簡単です。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">18:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">グラシア地区 散策</h4>
+                                <p class="text-gray-600">美味しいバルやレストランが多いエリアで夕食。</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- 6日目: イブ -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【6日目】12月24日(水) - 🎄 バルセロナ (クリスマスイブ)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">午前</div>
+                            <div class="activity">
+                                <h4 class="font-bold">市内散策・お土産探し</h4>
+                                <p class="text-gray-600">主要観光は終えているため、ゆったり過ごします。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">午後</div>
+                            <div class="activity">
+                                <h4 class="font-bold">【注意】短縮営業</h4>
+                                <p class="text-gray-600">多くの施設・店舗が14:00～17:00頃に閉まります。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">夕方</div>
+                            <div class="activity">
+                                <h4 class="font-bold">クリスマスマーケット散策</h4>
+                                <p class="text-gray-600">バルセロナ大聖堂前の広場が有名です。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">夜</div>
+                            <div class="activity">
+                                <h4 class="font-bold">クリスマスイブのディナー</h4>
+                                <p class="font-bold text-red-600">【重要】11月中の予約が必須です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- 7日目: 移動日 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【7日目】12月25日(木) - 🚄 マドリードへ移動 (クリスマス当日)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">09:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ホテルチェックアウト</h4>
+                                <p class="text-gray-600">荷物はフロントに預けます。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">10:30-11:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">バルセロナ大聖堂にて「クリスマスミサ」見学</h4>
+                                <p class="text-gray-600">ほぼ全ての施設が休業する日の貴重な体験。静かに見学し、写真撮影は厳禁です。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">12:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">荷物ピックアップ、サンツ駅へ</h4>
+                                <p class="text-gray-600">ホテルからタクシーまたは地下鉄で移動。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">午後</div>
+                            <div class="activity">
+                                <h4 class="font-bold">高速鉄道でマドリードへ移動 (約3時間)</h4>
+                                <p class="font-bold text-red-600">【重要】便数が減るため早めの予約が必要です。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">夕方</div>
+                            <div class="activity">
+                                <h4 class="font-bold">マドリード・アトーチャ駅到着、ホテルへ</h4>
+                                <p class="text-gray-600">ホテル (クアトロ プエルタ デル ソル) へチェックイン。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">夜</div>
+                            <div class="activity">
+                                <h4 class="font-bold">クリスマスディナー</h4>
+                                <p class="font-bold text-red-600">【重要】11月中の予約が必須です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- 8日目: トレド -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【8日目】12月26日(金) - ⛪️ 古都トレド (日帰り)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">終日</div>
+                            <div class="activity">
+                                <h4 class="font-bold">古都トレド日帰り観光</h4>
+                                <p class="text-gray-600">【メモ】マドリードはこの日、通常営業日です。</p>
+                                <p class="text-gray-600">アトーチャ駅から高速鉄道(Avant)で約35分。鉄道チケットの事前予約推奨。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">午前</div>
+                            <div class="activity">
+                                <h4 class="font-bold">トレド大聖堂、サント・トメ教会 (エル・グレコ)</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">午後</div>
+                            <div class="activity">
+                                <h4 class="font-bold">旧市街の散策</h4>
+                            </div>
+                        </div>
+                         <div class="itinerary-item">
+                            <div class="time">夕方</div>
+                            <div class="activity">
+                                <h4 class="font-bold">マドリードに戻り夕食</h4>
+                                <p class="text-gray-600">Taberna El Sur など。</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- 9日目: マドリード観光・買い物 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【9日目】12月27日(土) - 👑 マドリード (市内観光・買い物)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">09:30</div>
+                            <div class="activity">
+                                <h4 class="font-bold">マドリード王宮</h4>
+                                <p class="text-gray-600">事前予約推奨。ホテル（ソル駅）から徒歩圏内です。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">12:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">サン・ミゲル市場 (タパスランチ)</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">14:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">マヨール広場・ソル駅周辺 散策</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">15:00-19:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">【★】恋人へのプレゼント購入タイム</h4>
+                                <p class="text-gray-600">服やアクセサリーを探します。</p>
+                                <!-- ショッピングボックス -->
+                                <div class="shopping-box">
+                                    <h4 class="flex items-center"><span class="text-2xl mr-2">🛍️</span>訪問先候補 (マドリード)</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700">
+                                        <li><strong>エル・コルテ・イングレス</strong>: ソル駅近くの店舗、または品揃え豊富なカステリャーナ店へ。</li>
+                                        <li><strong>サラマンカ地区</strong>: LOEWE(ロエベ)旗艦店や、M stos などマドリード発ブランド、高級ブティックが集まるエリア。</li>
                                     </ul>
                                 </div>
-                            </div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>10:00 (目安): カタルーニャ音楽堂</strong>
-                                <p class="text-sm text-gray-600">※上記のショッピング後、予約時間に合わせて訪問。<strong class="text-red-600">【ガイドツアー予約】</strong> ホール内部に入るにはツアー必須です。</p>
-                                </div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🍽️</span><div class="activity-content"><strong>12:00 (目安): ボケリア市場 (サン・ジョセップ市場)</strong><p class="text-sm text-gray-600">ランチや食べ歩きに。午前中が活気があります。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🌇</span><div class="activity-content"><strong>15:00 (目安): ブンケルス・デル・カルメル (絶景スポット)</strong><p class="text-sm text-gray-600">バルセロナの街を一望できる市民の憩いの場。タクシーでのアクセスが簡単です。</p></div></li>
-                        </ul>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">夜</div>
+                            <div class="activity">
+                                <h4 class="font-bold">マドリード最後の夜</h4>
+                                <p class="text-gray-600">フラメンコ鑑賞（要予約）など。</p>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
-                <!-- 6日目: 12/24 (水) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center text-red-700">
-                        Day 6: 12月24日(水) - バルセロナ (クリスマスイブ)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-3">
-                            <li class="activity-item"><span class="text-xl pt-1">🛍️</span><div class="activity-content"><strong>午前:</strong> 市内散策・最終お土産探し<p class="text-sm text-gray-600">ホテル周辺（グラシア通り）で、昨日までに見逃したブランドの買い物ができます。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">⚠️</span><div class="activity-content"><strong>午後: 【注意】短縮営業</strong><p class="text-sm text-gray-600">多くの施設・店舗が14:00～17:00頃に閉まります。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🎄</span><div class="activity-content"><strong>夕方:</strong> バルセロナ大聖堂前のクリスマスマーケット散策</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🍽️</span><div class="activity-content"><strong>夜: クリスマスイブのディナー</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【最重要】11月中の予約が必須です。</strong></p></div></li>
-                        </ul>
+                <!-- 10日目: 出発 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【10日目】12月28日(日) - ✈️ マドリード (出発)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">09:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">ホテルチェックアウト</h4>
+                                <p class="text-gray-600">最終お土産探し。</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">12:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">マドリード・バラハス空港 (MAD) へ移動</h4>
+                            </div>
+                        </div>
+                        <div class="itinerary-item">
+                            <div class="time">17:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">✈️ マドリード発 (帰国便)</h4>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
-                <!-- 7日目: 12/25 (木) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center text-red-700">
-                        Day 7: 12月25日(木) - マドリードへ移動 (クリスマス当日)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <p class="mb-3 text-sm text-red-700">ほぼ全ての店が休業する日。ミサ見学と移動日にするのが最適解です。</p>
-                        <ul class="space-y-3">
-                            <li class="activity-item"><span class="text-xl pt-1">⛪</span><div class="activity-content"><strong>10:30-11:30: バルセロナ大聖堂にて「クリスマスミサ」見学</strong><p class="text-sm text-gray-600">静かに見学し、写真撮影は厳禁です。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🚄</span><div class="activity-content"><strong>午後: 高速鉄道でマドリードへ移動 (約3時間)</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【重要】</strong> 便数が減るため早めの予約が必要です。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏨</span><div class="activity-content"><strong>夕方:</strong> マドリード・アトーチャ駅到着、ホテル（クアトロ プエルタ デル ソル）へ。</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🍽️</span><div class="activity-content"><strong>夜: クリスマスディナー</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【最重要】</strong> こちらも11月中の予約が必須です。</p></div></li>
-                        </ul>
+                <!-- 11日目: 帰国 -->
+                <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
+                    <summary>【11日目】12月29日(月) - 🇯🇵 東京 (到着)</summary>
+                    <div class="border-t border-gray-200">
+                        <div class="itinerary-item">
+                            <div class="time">10:00</div>
+                            <div class="activity">
+                                <h4 class="font-bold">✈️ 東京（成田 NRT）到着</h4>
+                                <p class="text-gray-600">お疲れ様でした！</p>
+                            </div>
+                        </div>
                     </div>
-                </details>
+                </detais>
 
-                <!-- 8日目: 12/26 (金) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center text-green-800">
-                        Day 8: 12月26日(金) - 古都トレド (日帰り)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <p class="mb-3 text-sm text-green-700">マドリードは通常営業日。日帰り観光に最適な日です。</p>
-                        <ul class="space-y-3">
-                            <li class="activity-item"><span class="text-xl pt-1">🚄</span><div class="activity-content"><strong>終日: 古都トレド日帰り観光</strong><p class="text-sm text-gray-600">アトーチャ駅から高速鉄道(Avant)で約35分。<strong class="text-red-600">【鉄道予約推奨】</strong></p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>午前:</strong> トレド大聖堂、サント・トメ教会 (エル・グレコ)</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🚶</span><div class="activity-content"><strong>午後:</strong> 旧市街の散策</div></li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 9日目: 12/27 (土) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden" open>
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center text-green-800">
-                        Day 9: 12月27日(土) - マドリード (市内観光・買い物)
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-4">
-                            <li class="activity-item"><span class="text-xl pt-1">🏛️</span><div class="activity-content"><strong>09:30: マドリード王宮</strong><p class="text-sm text-gray-600"><strong class="text-red-600">【予約推奨】</strong> ホテル（ソル駅）から徒歩圏内です。</p></div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">🍽️</span><div class="activity-content"><strong>12:00: サン・ミゲル市場 (タパスランチ)</strong></div></li>
-                            
-                            <!-- UI変更：ショッピング情報を箇条書きで明確化 -->
-                            <li class="activity-item"><span class="text-xl pt-1">🛍️</span><div class="activity-content"><strong>15:00-19:00: 【★】恋人へのプレゼント購入タイム</strong>
-                                <p class="text-sm text-gray-600 mb-3">ホテル（ソル駅）から徒歩または地下鉄でアクセスしやすいエリアです。</p>
-                                <div class="shopping-note">
-                                    <p class="text-sm font-semibold text-gray-700 mb-2">訪問先候補:</p>
-                                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                        <li><strong>ロエベ(LOEWE):</strong> サラマンカ地区の旗艦店（CASA LOEWE）またはデパートで。</li>
-                                        <li><strong>エル・コルテ・イングレス:</strong> カステリャーナ店（高級品・ブランド豊富）またはソル駅前の店舗。</li>
-                                        <li><strong>サラマンカ地区 (セラーノ通り):</strong> LOEWE以外のハイブランドや「M stos」など。</li>
-                                    </ul>
-                                </div>
-                            </div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">💃</span><div class="activity-content"><strong>夜:</strong> マドリード最後の夜 (フラメンコ鑑賞など ※要予約)</div></li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 10日目: 12/28 (日) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center">
-                        Day 10: 12月28日(日) - マドリード 出発
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-3">
-                            <li class="activity-item"><span class="text-xl pt-1">🏨</span><div class="activity-content"><strong>09:00:</strong> ホテルチェックアウト、最終お土産探し</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">✈️</span><div class="activity-content"><strong>12:00:</strong> マドリード・バラハス空港 (MAD) へ移動</div></li>
-                            <li class="activity-item"><span class="text-xl pt-1">✈️</span><div class="activity-content"><strong>17:00:</strong> マドリード発 (帰国便)</div></li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 11日目: 12/29 (月) -->
-                <details class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <summary class="font-bold text-lg p-4 cursor-pointer hover:bg-gray-50 flex justify-between items-center">
-                        Day 11: 12月29日(月) - 東京 到着
-                        <span class="arrow text-gray-500 transform transition-transform">▶</span>
-                    </summary>
-                    <div class="p-4 border-t border-gray-200 text-gray-700">
-                        <ul class="space-y-3">
-                            <li class="activity-item"><span class="text-xl pt-1">🛬</span><div class="activity-content"><strong>10:00:</strong> 東京（成田 NRT）到着</div></li>
-                        </ul>
-                    </div>
-                </details>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- フッター -->
-    <footer class="text-center p-6 mt-8 bg-gray-800 text-gray-300">
-        <p>¡Buen viaje! 素晴らしい旅を！</p>
-        <p class="text-sm mt-1">スリには十分注意してください！</p>
-    </footer>
-
+            </section>
+        </main>
+    </div>
 </body>
 </html>
