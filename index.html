@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f4f4f4; /* 少しグレーの背景 */
+            background-color: #fefcfb; /* 薄いベージュ */
         }
         details > summary {
             cursor: pointer;
@@ -60,14 +60,6 @@
             font-weight: 700;
             color: #16a34a; /* 緑 */
         }
-        /* 注意書き */
-        .note-box {
-            background-color: #fefce8; /* 黄色 (スペイン) */
-            border: 1px solid #fde047; /* 黄色 (スペイン) */
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 1.5rem;
-        }
         /* 食事のおすすめ */
         .food-box {
             background-color: #fffbeb; /* 薄い黄色 (スペイン) */
@@ -101,7 +93,7 @@
             <h2 class="text-2xl font-bold mb-4 text-red-800">🏨 旅程サマリー</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- バルセロナ -->
-                <div class="bg-gray-50 p-4 rounded-lg border">
+                <div class="bg-gray-50 p-4 rounded-lg border border-yellow-500">
                     <h3 class="font-bold text-lg">バルセロナ (5泊)</h3>
                     <p class="text-gray-700">12月20日(土) 12:00 チェックイン</p>
                     <p class="text-gray-700">12月25日(木) 12:00 チェックアウト</p>
@@ -109,7 +101,7 @@
                     <p class="text-sm text-gray-600">Passeig de Gràcia 102, Barcelona</p>
                 </div>
                 <!-- マドリード -->
-                <div class="bg-gray-50 p-4 rounded-lg border">
+                <div class="bg-gray-50 p-4 rounded-lg border border-yellow-500">
                     <h3 class="font-bold text-lg">マドリード (3泊)</h3>
                     <p class="text-gray-700">12月25日(木) 14:00以降 チェックイン</p>
                     <p class="text-gray-700">12月28日(日) 12:00まで チェックアウト</p>
@@ -125,23 +117,19 @@
             
             <!-- 合計金額 -->
             <div id="total-cost" class="p-6 border-b border-gray-200 bg-yellow-50">
-                <h3 class="text-xl font-semibold mb-2 text-red-800">現在の予約合計金額</h3>
+                <h3 class="text-xl font-semibold mb-2 text-red-800">現在の予約合計金額 (目安)</h3>
                 <div class="text-2xl font-bold text-gray-900">
                     <span id="total-jpy">528,961</span>円
                 </div>
                 <div class="text-xl font-bold text-gray-800 mt-1">
                     + <span id="total-eur">230.00</span> ユーロ
                 </div>
+                <a href="https://walica.jp/group/01KA8RCX63SQBA552N9SDNJB3Q" target="_blank" rel="noopener noreferrer" class="inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700 transition-colors mt-4">
+                    Walicaで費用をチェックする
+                </a>
             </div>
 
             <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- わりかん -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-red-800">わりかんリンク</h3>
-                    <a href="https://walica.jp/group/01KA8RCX63SQBA552N9SDNJB3Q" target="_blank" rel="noopener noreferrer" class="inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700 transition-colors">
-                        Walicaで費用をチェックする
-                    </a>
-                </div>
 
                 <!-- ホテル予約 -->
                 <div>
@@ -178,8 +166,8 @@
                 </div>
                 
                 <!-- 予約済みチケット -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-red-800">予約済みチケット情報</h3>
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-semibold mb-4 text-red-800">予約済みチケット・ディナー情報</h3>
                     <ul class="space-y-4">
                         <!-- カサ・ミラ -->
                         <li class="flex items-start space-x-3 p-3 bg-yellow-50 rounded-lg border border-yellow-300" data-price-eur="58">
@@ -221,6 +209,16 @@
                                 <p class="text-sm text-gray-600">担当: <strong class="text-red-600">未来</strong></p>
                             </div>
                         </li>
+                        <!-- 12/24 ディナー -->
+                        <li class="flex items-start space-x-3 p-3 bg-yellow-50 rounded-lg border border-yellow-300" data-price-eur="0">
+                            <span class="text-2xl pt-1">🍽️</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">クリスマスイブ・ディナー (Antigua)</h4>
+                                <p class="text-sm text-gray-600">予約番号: <strong class="text-red-600">1757610873</strong> (TheFork)</p>
+                                <p class="text-sm text-gray-600">特典: <strong class="text-gray-800">アラカルト 50% OFF</strong></D>
+                                <p class="text-sm text-gray-600">担当: <strong class="text-red-600">祐平</strong></p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -228,7 +226,7 @@
 
         <!-- 1日目: 出発 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【1日目】12月19日(金) - ✈️ 東京 (出発)</summary>
+            <summary class="text-red-800">【1日目】12月19日(金) - ✈️ 東京 (出発)</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">18:00</div>
@@ -243,7 +241,7 @@
 
         <!-- 2日目: 到着・仮眠 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【2日目】12月20日(土) - 🏨 バルセロナ到着・仮眠</summary>
+            <summary class="text-red-800">【2日目】12月20日(土) - 🏨 バルセロナ到着・仮眠</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">03:00</div>
@@ -283,7 +281,7 @@
                     <h4 class="font-bold mb-2">🍴 食事のおすすめ (2日目)</h4>
                     <p><strong>ランチ (13:00):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>El Nacional:</strong> ホテル近くの巨大フードホール。内装が美しく、タパス、お肉、シーフードなど何でも揃う。遊び心があり観光客にも人気。</li>
+                        <li><strong>El Nacional:</strong>  ホテル近くの巨大フードホール。内装が美しく、タパス、お肉、シーフードなど何でも揃う。遊び心があり観光客にも人気。</li>
                     </ul>
                     <p class="mt-2"><strong>夕食 (19:00):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
@@ -295,7 +293,7 @@
 
         <!-- 3日目: ガウディ -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【3日目】12月21日(日) - 🎨 ガウディ建築とショッピング</summary>
+            <summary class="text-red-800">【3日目】12月21日(日) - 🎨 ガウディ建築とショッピング</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">09:30</div>
@@ -353,7 +351,7 @@
                     <h4 class="font-bold mb-2">🍴 食事のおすすめ (3日目)</h4>
                     <p><strong>ランチ (14:00):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>Cervecería Catalana:</strong> グラシア通りから少し歩くが、地元民にも観光客にも大人気のタパス店。行列必至だが活気がある。（13:00から通し営業）</li>
+                        <li><strong>Cervecería Catalana:</strong>  グラシア通りから少し歩くが、地元民にも観光客にも大人気のタパス店。行列必至だが活気がある。（13:00から通し営業）</li>
                     </ul>
                     <p class="mt-2"><strong>夕食:</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
@@ -365,7 +363,7 @@
 
         <!-- 4日目: 旧市街・海辺 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【4日目】12月22日(月) - 🏰 旧市街と海辺の散策</summary>
+            <summary class="text-red-800">【4日目】12月22日(月) - 🏰 旧市街と海辺の散策</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">10:00</div>
@@ -386,7 +384,7 @@
                 <!-- ショッピング -->
                 <div class="shop-box mx-6 mb-0">
                     <h4 class="font-bold mb-2">🛍️ ショッピング・スポット (11:00)</h4>
-                    <p class="text-sm text-gray-700">ゴシック地区の散策中に、バルセロナ発の若者向けブランドが集まる「ドゥック通り」に立ち寄れます。</p>
+                    <p class="text-sm text-gray-700">ゴシック地区の散策中に、バルセロナ発の若者向けブランドが集まる「ドゥック通り」や、2店舗目の「Bassal」に立ち寄れます。</p>
                     <ul class="list-disc pl-5 mt-2 text-gray-700">
                         <li><strong>Bassal (Carrer de la Palla 9):</strong> 大聖堂のすぐ裏！ゴシック地区の店舗。</li>
                         <li><strong>Carrer del Duc (ドゥック通り):</strong> NUDE PROJECT, 2 JS, Scuffers など。</li>
@@ -412,7 +410,7 @@
                 <div class="shop-box mx-6 mb-0">
                     <h4 class="font-bold mb-2">🛍️ ショッピング・スポット (15:30)</h4>
                     <ul class="list-disc pl-5 mt-2 text-gray-700">
-                        <li><strong>Etnia Barcelona:</strong> ボルン地区に旗艦店がある、バルセロナ発のアイウェアブランド。</li>
+                        <li><strong>Etnia Barcelona:</strong>  ボルン地区に旗艦店がある、バルセロナ発のアイウェアブランド。</li>
                         <li><strong>Lourdes Bergadá, Orenda:</strong> バルセロナ発のローカルブランドやセレクトショップがこのエリアに集まっています。</li>
                     </ul>
                 </div>
@@ -422,7 +420,7 @@
                     <h4 class="font-bold mb-2">🍴 食事のおすすめ (4日目)</h4>
                     <p><strong>ランチ (13:30):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>Can Solé または La Mar Salada:</strong> バルセロネータで伝統的なパエリア（アロス・ネグロ＝イカ墨のパエリアが有名）を食べるなら。要予約推奨。</li>
+                        <li><strong>Can Solé または La Mar Salada:</strong>  バルセロネータで伝統的なパエリア（アロス・ネグロ＝イカ墨のパエリアが有名）を食べるなら。要予約推奨。</li>
                     </ul>
                     <p class="mt-2"><strong>夕食 (ボルン地区):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
@@ -435,7 +433,7 @@
 
         <!-- 5日目: 市場と絶景 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【5日目】12月23日(火) - 🎶 市場と絶景</summary>
+            <summary class="text-red-800">【5日目】12月23日(火) - 🎶 市場と絶景</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">10:00</div>
@@ -481,7 +479,7 @@
                     <h4 class="font-bold mb-2">🍴 食事のおすすめ (5日目)</h4>
                     <p><strong>ランチ (12:00):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>ボケリア市場内:</strong> 市場内のバル（El Quim de la Boqueria など）で、新鮮なシーフードやキノコのソテーを食べる。最高に「スペインらしい」体験。</li>
+                        <li><strong>ボケリア市場内:</strong>  市場内のバル（El Quim de la Boqueria など）で、新鮮なシーフードやキノコのソテーを食べる。最高に「スペインらしい」体験。</li>
                     </ul>
                     <p class="mt-2"><strong>夕食 (グラシア地区):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
@@ -494,7 +492,7 @@
 
         <!-- 6日目: イブ -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【6日目】12月24日(水) - 🎄 クリスマスイブ</summary>
+            <summary class="text-red-800">【6日目】12月24日(水) - 🎄 クリスマスイブ</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">午前</div>
@@ -504,24 +502,25 @@
                     </div>
                 </div>
                 <div class="itinerary-item">
-                    <div class="time">午後</div>
-                    <div class="activity">
-                        <h4 class="font-bold">【注意】短縮営業</h4>
-                        <p class="text-gray-600">多くの施設・店舗が14:00～17:00頃に閉まります。</p>
-                    </div>
-                </div>
-                <div class="itinerary-item">
-                    <div class="time">夕方</div>
+                    <div class="time">14:00</div>
                     <div class="activity">
                         <h4 class="font-bold">サンタ・エウラリア大聖堂前のクリスマスマーケット</h4>
-                        <p class="text-gray-600">雰囲気を楽しむ。</p>
+                        <p class="text-gray-600">雰囲気を楽しむ。※イブは早く閉まるので注意。</p>
                     </div>
                 </div>
                 <div class="itinerary-item">
-                    <div class="time">夜</div>
+                    <div class="time">15:30</div>
                     <div class="activity">
-                        <h4 class="font-bold">クリスマスイブのディナー</h4>
-                        <p class="text-gray-600 text-red-600 font-bold">【予約必須】11月中の予約を強く推奨します。</p>
+                        <h4 class="font-bold">レストランへ移動</h4>
+                        <p class="text-gray-600">タクシーでグラシア地区の「Antigua」へ（約15-20分）。</p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="time">16:30</div>
+                    <div class="activity">
+                        <h4 class="font-bold">クリスマスイブ・ディナー</h4>
+                        <p class="text-gray-600">レストラン: Antigua (Carrer de Marià Cubí, 59)</p>
+                        <p class="status-reserved">【予約済み (祐平)】 予約番号: 1757610873</p>
                     </div>
                 </div>
 
@@ -532,10 +531,9 @@
                     <ul class="list-disc pl-5 text-gray-700">
                         <li><strong>La Esquina:</strong> 朝から開いているおしゃれなカフェ。ブランチや美味しいコーヒーで一息つくのに最適。</li>
                     </ul>
-                    <p class="mt-2"><strong>夕食 (イブ):</strong></p>
+                    <p class="mt-2"><strong>夕食 (16:30):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>ホテル パセオ デ グラシア:</strong> 宿泊するホテルのレストランがイブのディナーを提供していないか確認するのが一番確実です。</li>
-                        <li><strong>TheForkアプリ:</strong> 「12月24日」で絞り込み、予約可能なレストランを探す。</li>
+                        <li><strong>Antigua:</strong> 予約済みのレストラン。50%オフ特典を活用し、アラカルトで色々試すのがおすすめです。</li>
                     </ul>
                 </div>
             </div>
@@ -543,7 +541,7 @@
 
         <!-- 7日目: 移動 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【7日目】12月25日(木) - 🚄 マドリードへ移動 (クリスマス)</summary>
+            <summary class="text-red-800">【7日目】12月25日(木) - 🚄 マドリードへ移動 (クリスマス)</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">09:00</div>
@@ -588,8 +586,8 @@
                     </ul>
                     <p class="mt-2"><strong>夕食 (クリスマス):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>ホテル クアトロ プエルタ デル ソル:</strong> ホテル、または近隣の大手ホテルのレストラン（ウェスティン・パレスなど）が開いている可能性が高いです。</li>
-                        <li><strong>Sobrino de Botín:</strong> 世界最古のレストラン。クリスマスに営業している可能性あり。超高額・超予約困難ですが、遊び心としては最高峰。</li>
+                        <li><strong>La Rotonda (ウェスティン・パレス内):</strong>  美しいドームの下で食事。ホテルなので営業可能性大。</li>
+                        <li><strong>Sobrino de Botín:</strong>  世界最古のレストラン。クリスマスに営業していれば最高の体験に。</li>
                     </ul>
                 </div>
             </div>
@@ -597,7 +595,7 @@
 
         <!-- 8日目: トレド -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【8日目】12月26日(金) - ⛪️ 古都トレド (日帰り)</summary>
+            <summary class="text-red-800">【8日目】12月26日(金) - ⛪️ 古都トレド (日帰り)</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">終日</div>
@@ -637,7 +635,7 @@
 
         <!-- 9日目: マドリード観光・買い物 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【9日目】12月27日(土) - 🛍️ マドリード市内・プレゼント購入</summary>
+            <summary class="text-red-800">【9日目】12月27日(土) - 🛍️ マドリード市内・プレゼント購入</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">09:30</div>
@@ -671,7 +669,7 @@
                     <p class="text-sm text-gray-700">ホテル（ソル駅）周辺は、デパートもブティックエリアも近いです。</p>
                     <ul class="list-disc pl-5 mt-2 text-gray-700">
                         <li><strong>エル・コルテ・イングレス:</strong> ソル駅広場のすぐ隣にあり便利。ただしファッション狙いなら「カステリャーナ店」が最大規模。</li>
-                        <li><strong>サラマンカ地区 (セラーノ通り):</strong> LOEWEの旗艦店やM stos、ハイブランドが集まるエリア。</li>
+                        <li><strong>サラマンカ地区 (セラーノ通り):</strong>  LOEWEの旗艦店(CASA LOEWE)やM stos、ハイブランドが集まるエリア。</li>
                         <li><strong>グラン・ヴィア通り:</strong> ZARAやMANGOなど、バルセロナでも見たブランドのマドリード店が並ぶ。</li>
                     </ul>
                 </div>
@@ -689,11 +687,11 @@
                     <h4 class="font-bold mb-2">🍴 食事のおすすめ (9日目)</h4>
                     <p><strong>ランチ (12:00):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>サン・ミゲル市場:</strong> 生牡蠣、カニの甲羅詰め（チャン グーロ）、オリーブなど。</li>
+                        <li><strong>サン・ミゲル市場:</strong>  生牡蠣、カニの甲羅詰め（チャングーロ）、オリーブなど。</li>
                     </ul>
                     <p class="mt-2"><strong>夕食 (最後の夜):</strong></p>
                     <ul class="list-disc pl-5 text-gray-700">
-                        <li><strong>Casa Lucio:</strong> 遊び心満点！「ウエボス・ロトス（目玉焼きとポテト）」で世界的に有名な超・老舗。王族も訪れる。予約必須。</li>
+                        <li><strong>Casa Lucio:</strong>  遊び心満点！「ウエボス・ロトス（目玉焼きとポテト）」で世界的に有名な超・老舗。王族も訪れる。予約必須。</li>
                         <li><strong>フラメンコ鑑賞:</strong> Corral de la Morería（世界最高峰のタブラオ、食事もできる）など。</li>
                     </ul>
                 </div>
@@ -702,7 +700,7 @@
 
         <!-- 10日目: 出発 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【10日目】12月28日(日) - ✈️ マドリード (出発)</summary>
+            <summary class="text-red-800">【10日目】12月28日(日) - ✈️ マドリード (出発)</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">09:00</div>
@@ -721,7 +719,7 @@
 
         <!-- 11日目: 帰国 -->
         <details class="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
-            <summary>【11日目】12月29日(月) - 🇯🇵 東京 (到着)</summary>
+            <summary class="text-red-800">【11日目】12月29日(月) - 🇯🇵 東京 (到着)</summary>
             <div class="border-t border-gray-200">
                 <div class="itinerary-item">
                     <div class="time">10:00</div>
